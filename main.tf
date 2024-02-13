@@ -123,7 +123,7 @@ output "public_subnet_2_id" {
 resource "aws_launch_configuration" "example1" {
   name = "custom-example-launchconfig"
   # Ubuntu Server 18.04 LTS (HVM), SSD Volume Type in ap-south-01
-  image_id        = "ami-0c7217cdde317cfec"
+  image_id        = "ami-06aa3f7caf3a30282"
   instance_type   = "t2.micro"
   associate_public_ip_address = true
   security_groups = [aws_security_group.public_subnet_sg_1.id, aws_security_group.public_subnet_sg_2.id]
@@ -147,5 +147,5 @@ resource "aws_autoscaling_group" "example" {
   desired_capacity         = 2
   vpc_zone_identifier      = [aws_subnet.public_subnet_1.id, aws_subnet.public_subnet_2.id]
   health_check_grace_period = 30
-  health_check_type         = "EC2"
+  health_check_type = "EC2"
 }
